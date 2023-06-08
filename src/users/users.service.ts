@@ -13,8 +13,10 @@ export class UsersService {
       }});
 
     const hasSamePass = await compare(password, user.password)
+    
     if (hasSamePass)
       return user
+    
     return undefined
   }
 }
