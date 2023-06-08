@@ -29,4 +29,16 @@ describe('AuthController', () => {
   it('should be defined', () => {
     expect(controller).toBeDefined();
   });
+
+  describe('POST /signin', () => {
+    it('should 404 for non existente user', async () => {
+      const response = controller.signin({ username: 'a', password: 'b' })
+      await expect(response).rejects.toThrow()
+    })
+
+    it('should 404 for non existente user', async () => {
+      const response = await controller.signin({ username: 'admin', password: 'admin' })
+      expect(response.access_token).toBeTruthy()
+    })
+  })
 });

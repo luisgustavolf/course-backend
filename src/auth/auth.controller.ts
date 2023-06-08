@@ -11,7 +11,7 @@ export class AuthController {
 
   @Post('signin')
   async signin(@Body() body: SigninDto) {
-    return this.authService.login(body)
+    return this.authService.login(body.username, body.password)
   }
 
   @UseGuards(JwtAuthGuard)
