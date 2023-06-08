@@ -14,10 +14,10 @@ export class AuthService {
     const user = await this.usersService.find(username, password)
 
     if (!user) {
-      throw new BadRequestException('user not found')
+      throw new Error('User not found')
     }
 
-    const payload = { userId: await user.id }
+    const payload = { userId: user.id }
 
     return {
       access_token: this.jwtService.sign(payload),
