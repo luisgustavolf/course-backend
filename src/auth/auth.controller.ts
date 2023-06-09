@@ -2,7 +2,8 @@ import { Body, Controller, Get, HttpCode, HttpException, HttpStatus, Post, Reque
 import { AuthService } from './auth.service';
 import { JwtAuthGuard } from './jwt-auth.guard';
 import { SigninDto } from './dto/signin.input';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiResponse, ApiTags } from '@nestjs/swagger';
+import { SigninResponseDto } from './dto/signin.response';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -11,7 +12,8 @@ export class AuthController {
 
   @Post('signin')
   @HttpCode(200)
-  async signin(@Body() body: SigninDto) {
+  @ApiResponse({ status: '2XX', type: SigninResponseDto })
+  async signin(@Body() body: SigninDto): Promise<SigninResponseDto> {
     try {
       return await this.authService.login(body.username, body.password)
     } catch (error) {
@@ -22,11 +24,6 @@ export class AuthController {
   @UseGuards(JwtAuthGuard)
   @Get('authed')
   async authed() {
-    return { status: 'ok' }
-  }
-
-  @Get('unauthed')
-  async unauthed() {
     return { status: 'ok' }
   }
 }
