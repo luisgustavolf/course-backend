@@ -3,6 +3,12 @@
 ## Prerequisitos
 - docker & docker compose
 
+## Atenção
+As portas da aplicação e do banco foram alteradas para não gerar conflitos com o ambiente que possa já existir. Ficando:
+
+- API: 8080 (em vez de 3000, 80, ...)
+- Postgres: 5433 (em vez de 5432)
+
 ## Desenvolvimento
 
 ### Primeira inicialização
