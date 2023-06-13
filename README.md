@@ -28,7 +28,7 @@ yarn dev:seed
 # Verificar se o banco está rodando 
 docker compose up -d
 
-# http://localhost:3000/ 
+# http://localhost:8080/ 
 yarn dev
 ```
 
@@ -65,5 +65,5 @@ yarn test:e2e
 Depois da aplicação iniciada, basta acessar:
 
 ```
-http://localhost:3000/api-docs 
+http://localhost:8080/api-docs 
 ```
